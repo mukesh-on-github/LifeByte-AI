@@ -1,7 +1,7 @@
 {
   "projectId": "lifebyte-ai-bcd0d",
   "appId": "1:125314601277:web:f28a5ffac5a8d42ec6f554",
-  "apiKey": "AIzaSyDRQFaUzS3PAdZg74VfU40lgjbLV35VaTU",
+  "apiKey": "DUMMY_FIREBASE_API_KEY_REPLACE_WITH_REAL_KEY",
   "authDomain": "lifebyte-ai-bcd0d.firebaseapp.com",
   "firestoreDatabaseId": "ai-studio-lifebyte-b573ba14-1c47-46c8-951a-df648ea3adc7",
   "storageBucket": "lifebyte-ai-bcd0d.firebasestorage.app",
