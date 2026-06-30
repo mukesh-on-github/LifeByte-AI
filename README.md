@@ -16,10 +16,10 @@
 ## 🚀 Live Application
 
 🌐 **Production Deployment:**  
-https://ais-dev-k2y5wjpmgnozxaanfhfurm-948392883139.asia-east1.run.app
+https://lifebyte-ai-433805909346.us-west1.run.app
 
 🧪 **Sandbox Environment:**  
-https://ais-pre-k2y5wjpmgnozxaanfhfurm-948392883139.asia-east1.run.app
+https://lifebyte-ai-433805909346.us-west1.run.app
 
 ---
 
