@@ -1,0 +1,6 @@
+{
+  "name": "LifeByte AI",
+  "description": "An intelligent AI-powered personal life management companion to plan, organize, and execute life's responsibilities.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

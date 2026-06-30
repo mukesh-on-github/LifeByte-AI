@@ -1,0 +1,127 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and onboarding configuration.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "description": "Email address" },
+        "displayName": { "type": "string", "description": "Display name" },
+        "onboarded": { "type": "boolean", "description": "Whether onboarding is complete" },
+        "creationPref": { "type": "string", "description": "Onboarding choice: chat, voice, manual, upload" },
+        "areas": { "type": "array", "description": "Areas of importance (Work, Personal, etc.)" },
+        "notifications": { "type": "array", "description": "Notification settings" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "onboarded"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "A user personal or professional task.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "priority": { "type": "string", "enum": ["High", "Medium", "Low"] },
+        "category": { "type": "string" },
+        "deadline": { "type": "string", "format": "date" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" },
+        "allDay": { "type": "boolean" },
+        "completed": { "type": "boolean" },
+        "recurring": { "type": "string", "enum": ["none", "daily", "weekly", "monthly", "custom"] },
+        "steps": { "type": "array" },
+        "dependencies": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "completed", "createdAt"]
+    },
+    "Goal": {
+      "title": "Goal",
+      "description": "A long-term life goal.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "milestones": { "type": "array" },
+        "completed": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "completed"]
+    },
+    "FileRecord": {
+      "title": "FileRecord",
+      "description": "An uploaded file record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "type": { "type": "string" },
+        "permission": { "type": "string", "enum": ["🔒", "🤖"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "name", "url", "permission"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Activity log for actions in tasks.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "type": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "taskId", "type", "timestamp"]
+    },
+    "ChatConversation": {
+      "title": "ChatConversation",
+      "description": "AI companion conversation logging.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "messages": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "messages"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profile records containing onboarding choices."
+    },
+    "tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Tasks created by users."
+    },
+    "goals/{goalId}": {
+      "schema": "Goal",
+      "description": "Long term user goals broken down into milestones."
+    },
+    "files/{fileId}": {
+      "schema": "FileRecord",
+      "description": "Tracked files uploaded by users."
+    },
+    "activity/{activityId}": {
+      "schema": "ActivityLog",
+      "description": "Tracks task history edits and completions."
+    },
+    "conversations/{conversationId}": {
+      "schema": "ChatConversation",
+      "description": "Saved chats with the AI Companion."
+    }
+  }
+}
