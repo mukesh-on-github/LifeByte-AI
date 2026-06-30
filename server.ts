@@ -12,7 +12,7 @@ app.use(express.json({ limit: "10mb" }));
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 // Initialize Gemini SDK securely
-const geminiApiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || "AQ.Ab8RN6Jg2NfQ-gjmBAcwIrRzz4W7bAe7inVGSde-sHwSGFuDuw";
+const geminiApiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || "DUMMY_GEMINI_API_KEY_REPLACE_WITH_REAL_KEY";
 
 const ai = new GoogleGenAI({
   apiKey: geminiApiKey,
@@ -32,17 +32,17 @@ function getLocalCategoryAndPriority(text: string): { category: string; priority
   let reason = "Classified based on keywords via our offline backup engine.";
 
   // Determine Category
-  if (normalized.includes("work") || normalized.includes("meeting") || normalized.includes("project") || normalized.includes("sync") || normalized.includes("corporate") || normalized.includes("client")) {
+  if (normalized.includes("work") || normalized.includes("meeting") || normalized.includes("project") || normalized.includes("sync") || normalized.includes("corporate") || normalized.includes("cli[...]
     category = "Work";
-  } else if (normalized.includes("study") || normalized.includes("exam") || normalized.includes("test") || normalized.includes("learn") || normalized.includes("class") || normalized.includes("homework") || normalized.includes("course")) {
+  } else if (normalized.includes("study") || normalized.includes("exam") || normalized.includes("test") || normalized.includes("learn") || normalized.includes("class") || normalized.includes("home[...]
     category = "Study";
-  } else if (normalized.includes("run") || normalized.includes("gym") || normalized.includes("workout") || normalized.includes("health") || normalized.includes("doctor") || normalized.includes("meds") || normalized.includes("exercise")) {
+  } else if (normalized.includes("run") || normalized.includes("gym") || normalized.includes("workout") || normalized.includes("health") || normalized.includes("doctor") || normalized.includes("me[...]
     category = "Health";
-  } else if (normalized.includes("trip") || normalized.includes("travel") || normalized.includes("flight") || normalized.includes("hotel") || normalized.includes("vacation") || normalized.includes("pack")) {
+  } else if (normalized.includes("trip") || normalized.includes("travel") || normalized.includes("flight") || normalized.includes("hotel") || normalized.includes("vacation") || normalized.includes[...]
     category = "Travel";
-  } else if (normalized.includes("buy") || normalized.includes("pay") || normalized.includes("rent") || normalized.includes("budget") || normalized.includes("finance") || normalized.includes("bill") || normalized.includes("subscription")) {
+  } else if (normalized.includes("buy") || normalized.includes("pay") || normalized.includes("rent") || normalized.includes("budget") || normalized.includes("finance") || normalized.includes("bill[...]
     category = "Finance";
-  } else if (normalized.includes("family") || normalized.includes("kid") || normalized.includes("parent") || normalized.includes("cook") || normalized.includes("dinner") || normalized.includes("clean")) {
+  } else if (normalized.includes("family") || normalized.includes("kid") || normalized.includes("parent") || normalized.includes("cook") || normalized.includes("dinner") || normalized.includes("cl[...]
     category = "Family";
   }
 
@@ -308,7 +308,7 @@ app.post("/api/gemini/goal-milestones", async (req, res) => {
       return res.status(400).json({ error: "goalTitle is required" });
     }
 
-    const prompt = `Break down the long-term goal "${goalTitle}" (${goalDescription || 'No description'}) into 4 to 6 logical milestone checkpoints. Provide a concise title and description for each milestone.`;
+    const prompt = `Break down the long-term goal "${goalTitle}" (${goalDescription || 'No description'}) into 4 to 6 logical milestone checkpoints. Provide a concise title and description for ea[...]
 
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
@@ -431,7 +431,7 @@ Make sure to extract:
 1. Title of the task
 2. Optional category (Work, Personal, Study, Health, Travel, Finance, Family)
 3. Priority (High, Medium, Low)
-4. Specific date deadline mentioned (the current year is 2026. E.g. "tomorrow" would be "2026-07-01", "next Monday" would be "2026-07-06" based on current local date 2026-06-30). Format: YYYY-MM-DD. If none mentioned, estimate or leave empty.
+4. Specific date deadline mentioned (the current year is 2026. E.g. "tomorrow" would be "2026-07-01", "next Monday" would be "2026-07-06" based on current local date 2026-06-30). Format: YYYY-MM-[...]
 5. Recurring interval if mentioned (none, daily, weekly, monthly, custom)`;
 
     const response = await ai.models.generateContent({
